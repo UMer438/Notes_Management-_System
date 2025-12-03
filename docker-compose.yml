@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: notesdb-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ROOTroot
+      MYSQL_DATABASE: notesdb
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./database-setup.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pROOTroot" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - notes-network
+
+  # Web Application
+  webapp:
+    build: .
+    container_name: notesmanagement-app
+    environment:
+      DATABASE_URL: jdbc:mysql://mysql:3306/notesdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      DB_USER: root
+      DB_PASSWORD: ROOTroot
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - notes-network
+
+volumes:
+  mysql-data:
+
+
+networks:
+  notes-network:
+    driver: bridge

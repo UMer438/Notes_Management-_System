@@ -1,0 +1,63 @@
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    color: #444;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.user-notes {
+    background-color: #fff;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+}
+
+h3 {
+    color: #0056b3;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.note-post {
+    background-color: #e9ecef;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.note-post h4 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.note-post p {
+    margin: 5px 0;
+}
+
+a {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.highlight-username {
+    background-color: #ffd700;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-weight: bold;
+}

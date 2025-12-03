@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Notes Management</title>
+    <link rel="stylesheet" href="main.css">
+    <script>
+        function switchLogin() {
+            var loginForm = document.getElementById("loginForm");
+            var switchButton = document.getElementById("switchButton");
+            var title = document.getElementById("loginTitle");
+            var isUserLogin = loginForm.action.endsWith("LoginServlet");
+            var card = document.querySelector('.auth-card');
+
+            // Add animation class
+            card.style.animation = 'none';
+            card.offsetHeight; /* trigger reflow */
+            card.style.animation = 'slideUp 0.5s ease-out forwards';
+
+            if (isUserLogin) {
+                loginForm.action = "adminLogin";
+                switchButton.textContent = "Switch to User Login";
+                title.textContent = "Admin Login";
+                switchButton.classList.remove('btn-secondary');
+                switchButton.classList.add('btn-primary');
+            } else {
+                loginForm.action = "LoginServlet";
+                switchButton.textContent = "Switch to Admin Login";
+                title.textContent = "User Login";
+                switchButton.classList.remove('btn-primary');
+                switchButton.classList.add('btn-secondary');
+            }
+        }
+
+        window.onload = function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const error = urlParams.get('error');
+            const type = urlParams.get('type');
+
+            if (error) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.style.color = '#ef4444';
+                errorDiv.style.background = '#fee2e2';
+                errorDiv.style.padding = '0.75rem';
+                errorDiv.style.borderRadius = '0.5rem';
+                errorDiv.style.marginBottom = '1rem';
+                errorDiv.style.textAlign = 'center';
+                errorDiv.textContent = error;
+                document.querySelector('.card-body').prepend(errorDiv);
+            }
+
+            if (type === 'admin') {
+                switchLogin();
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="auth-container">
+        <div class="card auth-card">
+            <div class="text-center mb-4">
+                <h1 style="font-size: 2rem; margin-bottom: 0.5rem;">Welcome Back</h1>
+                <p class="text-muted">Sign in to manage your notes</p>
+            </div>
+
+            <div class="card-body">
+                <h2 id="loginTitle" class="text-center" style="font-size: 1.5rem; margin-bottom: 1.5rem;">User Login
+                </h2>
+
+                <form id="loginForm" action="LoginServlet" method="post">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required placeholder="Enter your username">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="Enter your password">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Sign In" class="btn btn-primary btn-block">
+                    </div>
+                </form>
+
+                <div class="text-center mt-4">
+                    <button id="switchButton" onclick="switchLogin()" class="btn btn-secondary btn-block mb-4">Switch to
+                        Admin Login</button>
+
+                    <p class="text-muted text-sm">
+                        Don't have an account? <a href="register.html" style="font-weight: 600;">Sign up now</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

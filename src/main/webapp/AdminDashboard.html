@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Notes Management</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-shield-alt" style="margin-right: 0.5rem;"></i> Admin Panel
+        </div>
+        <ul class="nav-links">
+            <li><a href="AdminDashboard.html" class="nav-link active">Dashboard</a></li>
+            <li><a href="logout" class="nav-link" style="color: var(--accent-color);">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container fade-in">
+        <div class="card" style="margin-top: 2rem; text-align: center; padding: 4rem 2rem;">
+            <h1 style="margin-bottom: 1rem;">
+                <i class="fas fa-user-cog" style="color: var(--primary-color);"></i>
+                Admin Dashboard
+            </h1>
+            <p class="text-muted" style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem;">
+                Manage users, monitor activities, and oversee all notes in the system
+            </p>
+
+            <div class="dashboard-grid">
+                <a href="deleteUser" class="card"
+                    style="text-decoration: none; color: inherit; border: 2px solid transparent; transition: all 0.3s;">
+                    <div style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;">
+                        <i class="fas fa-user-times"></i>
+                    </div>
+                    <h3>Delete User</h3>
+                    <p class="text-muted">Remove users from the system</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .dashboard-grid .card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-8px);
+        }
+    </style>
+</body>
+
+</html>
