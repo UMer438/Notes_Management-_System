@@ -1,5 +1,13 @@
 # Notes Management System
 
+**GitHub Repository:** https://github.com/UMer438/Notes_Management-_System.git
+
+```bash
+git clone https://github.com/UMer438/Notes_Management-_System.git
+cd Notes_Management-_System
+```
+
+
 A web-based notes management application built with Java Servlets, JSP, and MySQL.
 
 ## Features
